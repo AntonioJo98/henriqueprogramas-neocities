@@ -1,0 +1,17 @@
+# Secrets and credentials
+.env
+*.token
+*.key
+
+# Browser/session state
+browser-data/
+*.auth.json
+
+# Local tooling
+node_modules/
+__pycache__/
+*.py[cod]
+.neocities-import-staging/
+backups/
+.DS_Store
+Thumbs.db
