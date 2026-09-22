@@ -1,3 +1,5 @@
+const targetUrl = process.argv[2] ?? 'http://127.0.0.1:8765/projects/snake/';
+
 const pages = await fetch('http://127.0.0.1:9224/json').then((response) => response.json());
 const page = pages.find((entry) => entry.type === 'page');
 if (!page) throw new Error('No Chrome page target found');
@@ -5,9 +7,14 @@ if (!page) throw new Error('No Chrome page target found');
 const socket = new WebSocket(page.webSocketDebuggerUrl);
 const pending = new Map();
 let messageId = 0;
+let resolvePageLoad;
 
 socket.addEventListener('message', (event) => {
   const message = JSON.parse(event.data);
+  if (message.method === 'Page.loadEventFired' && resolvePageLoad) {
+    resolvePageLoad();
+    resolvePageLoad = undefined;
+  }
   if (message.id && pending.has(message.id)) {
     const { resolve, reject } = pending.get(message.id);
     pending.delete(message.id);
@@ -30,8 +37,11 @@ function send(method, params = {}) {
 
 await send('Page.enable');
 await send('Runtime.enable');
-await send('Page.navigate', { url: 'http://127.0.0.1:8765/projects/snake/' });
-await new Promise((resolve) => setTimeout(resolve, 800));
+const pageLoaded = new Promise((resolve) => {
+  resolvePageLoad = resolve;
+});
+await send('Page.navigate', { url: targetUrl });
+await pageLoaded;
 
 const before = await send('Runtime.evaluate', {
   expression: `JSON.stringify({
