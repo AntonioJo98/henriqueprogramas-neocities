@@ -80,7 +80,9 @@ def main() -> int:
                 if same_site(absolute) and absolute not in seen:
                     queue.append(absolute)
 
-    (OUT / ".public-mirror-manifest.tsv").write_text(
+    manifest_path = OUT.parent / "docs" / "public-mirror-manifest.tsv"
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.write_text(
         "remote_url\tlocal_path\tbytes\tsha256_12\n" + "\n".join(manifest) + "\n",
         encoding="utf-8",
     )
