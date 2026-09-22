@@ -23,7 +23,7 @@ The homepage now presents the first four projects as a coherent collection. Only
 1. **Snake** — playable JavaScript/Canvas rebuild in `site/projects/snake/`; live on Neocities.
 2. **Turtle Crossing** — playable JavaScript/Canvas rebuild in `site/projects/turtle-crossing/`; live on Neocities.
 3. **Flash Cards** — playable JavaScript rebuild in `site/projects/flash-cards/`; live on Neocities.
-4. Coffee & WiFi — card published, demo planned
+4. **Coffee & WiFi** — playable JavaScript directory rebuild in `site/projects/coffee-wifi/`; live on Neocities.
 
 The course-inspired projects will attribute Angela Yu's *100 Days of Code: The Complete Python Pro Bootcamp*. READMEs must distinguish the tutorial baseline, António's changes, and AI assistance.
 

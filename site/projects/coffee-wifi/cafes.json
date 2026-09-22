@@ -1,0 +1,7 @@
+[
+  {"id":"harbour-desk","name":"Harbour Desk","area":"Demo Quay","open":"08:00","close":"18:00","coffee":4,"wifi":5,"power":5,"demo":true},
+  {"id":"paper-moon","name":"Paper Moon","area":"Demo Library","open":"09:00","close":"17:00","coffee":5,"wifi":3,"power":2,"demo":true},
+  {"id":"window-seat","name":"Window Seat","area":"Demo Square","open":"07:30","close":"15:30","coffee":3,"wifi":4,"power":4,"demo":true},
+  {"id":"circuit-coffee","name":"Circuit Coffee","area":"Demo Station","open":"10:00","close":"20:00","coffee":4,"wifi":5,"power":3,"demo":true},
+  {"id":"quiet-corner","name":"Quiet Corner","area":"Demo Gardens","open":"08:30","close":"16:30","coffee":4,"wifi":4,"power":5,"demo":true}
+]

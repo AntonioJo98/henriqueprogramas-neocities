@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Browse a sample work-friendly café directory in António's Coffee & WiFi project.">
+  <title>Coffee & WiFi — Henrique Programas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="directory-shell">
+    <a class="back-link" href="/">← Portfolio</a>
+    <header class="directory-header">
+      <div><p class="eyebrow">Python project → JavaScript rebuild</p><h1>Coffee<br><span>&amp; WiFi</span></h1><p class="intro">Find a work-friendly table using a small, filterable demo directory.</p></div>
+      <p class="demo-note">Fictional demo listings<br>not real venue recommendations</p>
+    </header>
+    <section class="directory-panel" aria-labelledby="directory-title">
+      <div class="directory-toolbar"><div><p class="eyebrow">Directory</p><h2 id="directory-title">Find a good desk</h2></div><p id="result-count" class="result-count" aria-live="polite">Loading cafés…</p></div>
+      <form id="filter-form" class="filters">
+        <label>Search cafés or areas<input id="cafe-search" type="search" placeholder="Try “quay” or “desk”" autocomplete="off"></label>
+        <label>Minimum Wi-Fi<select id="wifi-filter"><option value="0">Any signal</option><option value="3">3 dots or more</option><option value="4">4 dots or more</option><option value="5">5 dots only</option></select></label>
+        <label class="power-filter"><input id="power-filter" type="checkbox"> Need power sockets</label>
+      </form>
+      <div id="cafe-results" class="cafe-results" aria-live="polite"></div>
+      <p id="no-results" class="no-results" hidden>No demo cafés match these filters. Try clearing one option.</p>
+    </section>
+    <section class="suggestion-panel" aria-labelledby="suggestion-title">
+      <div><p class="eyebrow">Local-only feature</p><h2 id="suggestion-title">Add a personal demo venue</h2><p>Your entry stays in this browser only. It is not submitted to a real directory or published on the site.</p></div>
+      <form id="suggestion-form" class="suggestion-form">
+        <label>Name<input name="name" required maxlength="60" placeholder="e.g. Notebook Nook"></label><label>Area<input name="area" required maxlength="60" placeholder="e.g. Demo Park"></label>
+        <label>Opens<input name="open" type="time" required></label><label>Closes<input name="close" type="time" required></label>
+        <label>Coffee (1–5)<select name="coffee" required><option value="">Choose</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label>
+        <label>Wi-Fi (1–5)<select name="wifi" required><option value="">Choose</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label>
+        <label>Power (1–5)<select name="power" required><option value="">Choose</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label>
+        <button type="submit">Save in this browser</button>
+      </form>
+      <p id="suggestion-status" class="suggestion-status" aria-live="polite"></p>
+    </section>
+    <section class="project-note"><h2>About this rebuild</h2><p>This browser directory revisits the Coffee &amp; WiFi Flask exercise from Angela Yu's <em>100 Days of Code: The Complete Python Pro Bootcamp</em>. The original explored routes, templates, CSV data and forms. This static version recreates the filtering and form interaction with JavaScript, local demo data and <code>localStorage</code>, which works on Neocities without a Python server.</p></section>
+  </main>
+  <script type="module" src="coffee-wifi.mjs"></script>
+</body>
+</html>

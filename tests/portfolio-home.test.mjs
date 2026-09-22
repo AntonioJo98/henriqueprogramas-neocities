@@ -35,11 +35,17 @@ test('Flash Cards card links to its playable demo', async () => {
   assert.match(html, /href="\/projects\/flash-cards\/"[^>]*>\s*Study Flash Cards/);
 });
 
-test('the remaining unbuilt project is labelled honestly without an invented demo link', async () => {
+test('Coffee & WiFi card links to its playable demo', async () => {
   const html = await readFile(new URL('index.html', siteRoot), 'utf8');
 
-  assert.equal((html.match(/Coming next/g) || []).length, 1);
-  assert.doesNotMatch(html, /href="\/projects\/coffee-wifi\//);
+  assert.match(html, /href="\/projects\/coffee-wifi\/"[^>]*>\s*Explore Coffee &amp; WiFi/);
+});
+
+test('homepage labels all four built projects as live', async () => {
+  const html = await readFile(new URL('index.html', siteRoot), 'utf8');
+
+  assert.equal((html.match(/Coming next/g) || []).length, 0);
+  assert.equal((html.match(/>Live</g) || []).length, 4);
 });
 
 test('homepage contains an accessible introduction and project section', async () => {
