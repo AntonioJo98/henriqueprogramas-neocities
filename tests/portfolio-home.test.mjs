@@ -29,11 +29,17 @@ test('Turtle Crossing card links to its playable demo', async () => {
   assert.match(html, /href="\/projects\/turtle-crossing\/"[^>]*>\s*Play Turtle Crossing/);
 });
 
-test('remaining unbuilt projects are labelled honestly instead of linking to invented demos', async () => {
+test('Flash Cards card links to its playable demo', async () => {
   const html = await readFile(new URL('index.html', siteRoot), 'utf8');
 
-  assert.equal((html.match(/Coming next/g) || []).length, 2);
-  assert.doesNotMatch(html, /href="\/projects\/(flash-cards|coffee-wifi)\//);
+  assert.match(html, /href="\/projects\/flash-cards\/"[^>]*>\s*Study Flash Cards/);
+});
+
+test('the remaining unbuilt project is labelled honestly without an invented demo link', async () => {
+  const html = await readFile(new URL('index.html', siteRoot), 'utf8');
+
+  assert.equal((html.match(/Coming next/g) || []).length, 1);
+  assert.doesNotMatch(html, /href="\/projects\/coffee-wifi\//);
 });
 
 test('homepage contains an accessible introduction and project section', async () => {

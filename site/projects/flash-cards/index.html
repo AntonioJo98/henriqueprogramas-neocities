@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Review French vocabulary with António's browser-based Flash Cards project.">
+  <title>Flash Cards — Henrique Programas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="study-shell">
+    <a class="back-link" href="/">← Portfolio</a>
+    <header class="study-header">
+      <div><p class="eyebrow">Python project → JavaScript rebuild</p><h1>Flash<br>Cards</h1><p class="intro">A small French vocabulary deck with a persistent learning list.</p></div>
+      <div class="progress-card"><span>Remaining</span><strong id="remaining-count">—</strong><small>cards</small></div>
+    </header>
+    <section class="study-panel" aria-labelledby="study-title">
+      <h2 id="study-title" class="visually-hidden">French vocabulary flash cards</h2>
+      <div id="flash-card" class="flash-card" tabindex="0" role="button" aria-describedby="card-hint" aria-label="Flash card. Activate to reveal the answer.">
+        <p id="card-language" class="card-language">French</p><p id="card-word" class="card-word">Loading…</p><p id="card-hint" class="card-hint">Tap or press Enter to reveal the translation.</p>
+      </div>
+      <p id="study-status" class="status" aria-live="polite">Loading the deck…</p>
+      <div class="study-actions">
+        <button id="skip-button" class="action action--secondary" type="button">← Still learning</button>
+        <button id="reveal-button" class="action action--reveal" type="button">Reveal answer</button>
+        <button id="known-button" class="action action--known" type="button">I know this ✓</button>
+      </div>
+      <button id="reset-button" class="reset-button" type="button">Reset saved progress</button>
+    </section>
+    <section class="project-note"><h2>About this rebuild</h2><p>This project revisits the Flash Card App exercise from Angela Yu's <em>100 Days of Code: The Complete Python Pro Bootcamp</em>. The original used Python Tkinter, CSV data and a three-second flip. This browser implementation uses locally curated vocabulary, keyboard support and <code>localStorage</code> so progress stays on this device.</p></section>
+  </main>
+  <script type="module" src="flash-cards.mjs"></script>
+</body>
+</html>

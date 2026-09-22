@@ -1,0 +1,22 @@
+[
+  {"id":"bonjour","french":"bonjour","english":"hello"},
+  {"id":"merci","french":"merci","english":"thank you"},
+  {"id":"livre","french":"livre","english":"book"},
+  {"id":"maison","french":"maison","english":"house"},
+  {"id":"eau","french":"eau","english":"water"},
+  {"id":"soleil","french":"soleil","english":"sun"},
+  {"id":"lune","french":"lune","english":"moon"},
+  {"id":"chat","french":"chat","english":"cat"},
+  {"id":"chien","french":"chien","english":"dog"},
+  {"id":"ami","french":"ami","english":"friend"},
+  {"id":"temps","french":"temps","english":"time"},
+  {"id":"jour","french":"jour","english":"day"},
+  {"id":"nuit","french":"nuit","english":"night"},
+  {"id":"rouge","french":"rouge","english":"red"},
+  {"id":"vert","french":"vert","english":"green"},
+  {"id":"bleu","french":"bleu","english":"blue"},
+  {"id":"petit","french":"petit","english":"small"},
+  {"id":"grand","french":"grand","english":"big"},
+  {"id":"manger","french":"manger","english":"to eat"},
+  {"id":"apprendre","french":"apprendre","english":"to learn"}
+]
