@@ -1,32 +1,65 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The web site of henriqueprogramas</title>
-    <!-- The style.css file allows you to change the look of your web pages.
-         If you include the next line in all your web pages, they will all share the same look.
-         This makes it easier to make new pages for your site. -->
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
-  </head>
-  <body>
-    <h1>Welcome to my Website!</h1>
-
-    <p>This is a paragraph! Here's how you make a link: <a href="https://neocities.org">Neocities</a>.</p>
-
-    <p>Here's how you can make <strong>bold</strong> and <em>italic</em> text.</p>
-
-    <p>Here's how you can add an image:</p>
-    <img src="/neocities.png" alt="Site hosted by Neocities">
-
-    <p>Here's how to make a list:</p>
-
-    <ul>
-      <li>First thing</li>
-      <li>Second thing</li>
-      <li>Third thing</li>
-    </ul>
-
-    <p>To learn more HTML/CSS, check out these <a href="https://neocities.org/tutorials">tutorials</a>!</p>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="António's growing portfolio of interactive Python and JavaScript learning projects.">
+  <title>Henrique Programas — Interactive project portfolio</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#projects">Skip to projects</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Henrique Programas home"><span class="brand-mark" aria-hidden="true">H:</span><span>Henrique Programas</span></a>
+    <a class="github-link" href="https://github.com/AntonioJo98/henriqueprogramas-neocities">GitHub ↗</a>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Learning in public · Python + JavaScript</p>
+        <h1 id="page-title">Small programs.<br><span>Real interactions.</span></h1>
+        <p class="lede">A growing collection of course-inspired projects rebuilt for the browser, documented honestly, and improved one step at a time.</p>
+        <a class="primary-action" href="#projects">Explore the projects <span aria-hidden="true">↓</span></a>
+      </div>
+      <aside class="build-status" aria-label="Portfolio progress">
+        <div class="status-orbit" aria-hidden="true"><span class="orbit-dot"></span><span class="orbit-core">01</span></div>
+        <p><strong>1 project live</strong><br>3 queued for rebuilding</p>
+      </aside>
+    </section>
+    <section id="projects" class="projects" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">The first collection</p><h2 id="projects-title">Projects</h2></div>
+        <p>Play what is ready. Follow the rest as each project moves from Python exercise to interactive web experience.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card project-card--live" data-project="snake">
+          <div class="project-visual snake-visual" aria-hidden="true"><img src="/projects/snake/screenshot.png" alt=""><span class="live-pill">Live</span></div>
+          <div class="project-body">
+            <div class="project-number">01</div><p class="project-type">Game · JavaScript Canvas</p><h3>Snake</h3>
+            <p>Guide the snake, collect pixels, and protect your high score. A Python course project rebuilt as a browser game.</p>
+            <ul class="tag-list" aria-label="Technologies"><li>JavaScript</li><li>Canvas</li><li>LocalStorage</li></ul>
+            <div class="card-actions"><a class="play-action" href="/projects/snake/">Play Snake <span aria-hidden="true">→</span></a><a class="source-action" href="https://github.com/AntonioJo98/henriqueprogramas-neocities">Source</a></div>
+          </div>
+        </article>
+        <article class="project-card" data-project="turtle-crossing">
+          <div class="project-visual road-visual" aria-hidden="true"><span class="road-line road-line--one"></span><span class="road-line road-line--two"></span><span class="turtle-token">▲</span><span class="coming-pill">Coming next</span></div>
+          <div class="project-body"><div class="project-number">02</div><p class="project-type">Game · Planned Canvas rebuild</p><h3>Turtle Crossing</h3><p>Cross increasingly busy lanes, avoid moving obstacles, and reach the next level.</p><ul class="tag-list" aria-label="Planned technologies"><li>JavaScript</li><li>Canvas</li><li>Collision logic</li></ul></div>
+        </article>
+        <article class="project-card" data-project="flash-cards">
+          <div class="project-visual cards-visual" aria-hidden="true"><span class="demo-card demo-card--back">English</span><span class="demo-card demo-card--front">Français</span><span class="coming-pill">Coming next</span></div>
+          <div class="project-body"><div class="project-number">03</div><p class="project-type">Learning app · Planned web rebuild</p><h3>Flash Cards</h3><p>Review vocabulary, flip each card, and keep track of words already learned.</p><ul class="tag-list" aria-label="Planned technologies"><li>JavaScript</li><li>JSON</li><li>LocalStorage</li></ul></div>
+        </article>
+        <article class="project-card" data-project="coffee-wifi">
+          <div class="project-visual cafe-visual" aria-hidden="true"><span class="cup"><span class="steam steam--one"></span><span class="steam steam--two"></span></span><span class="wifi">)))</span><span class="coming-pill">Coming next</span></div>
+          <div class="project-body"><div class="project-number">04</div><p class="project-type">Directory · Planned web rebuild</p><h3>Coffee &amp; WiFi</h3><p>Browse café workspaces, compare practical ratings, and add useful local discoveries.</p><ul class="tag-list" aria-label="Planned technologies"><li>JavaScript</li><li>Forms</li><li>Local data</li></ul></div>
+        </article>
+      </div>
+    </section>
+    <section class="process-note" aria-labelledby="process-title">
+      <p class="eyebrow">How this portfolio is built</p><h2 id="process-title">Course foundations, personal rebuilding.</h2>
+      <p>Projects inspired by Angela Yu's <em>100 Days of Code: The Complete Python Pro Bootcamp</em> are attributed clearly. Each page distinguishes the tutorial baseline, António's changes, and AI assistance.</p>
+    </section>
+  </main>
+  <footer><p>Built carefully, tested locally, and hosted on Neocities.</p><p>Portfolio in progress · 2026</p></footer>
+</body>
 </html>

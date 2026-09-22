@@ -18,14 +18,12 @@ This repository is bootstrapped from the public starter page at `https://henriqu
 
 ## Interactive projects
 
-1. **Snake** — playable JavaScript/Canvas rebuild in `site/projects/snake/`; tested locally, deployment pending review and Neocities authentication.
-2. Turtle Crossing — planned
-3. Flash Cards — planned
-4. Coffee & WiFi — planned
-5. Disappearing Text — planned
-6. Breakout — planned
-7. Whack-a-Mole — planned
-8. Calculator — planned
+The homepage now presents the first four projects as a coherent collection. Only implemented demos receive live links; planned projects are labelled honestly.
+
+1. **Snake** — playable JavaScript/Canvas rebuild in `site/projects/snake/`; live on Neocities.
+2. Turtle Crossing — card published, demo planned
+3. Flash Cards — card published, demo planned
+4. Coffee & WiFi — card published, demo planned
 
 The course-inspired projects will attribute Angela Yu's *100 Days of Code: The Complete Python Pro Bootcamp*. READMEs must distinguish the tutorial baseline, António's changes, and AI assistance.
 
