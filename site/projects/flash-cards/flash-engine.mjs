@@ -27,7 +27,28 @@ export function skipCard(state, random = Math.random) {
     ...state,
     current: pick(pool, random),
     revealed: false,
+    checking: false,
+    options: [],
+    lastAnswerCorrect: null,
   };
+}
+
+export function beginKnowledgeCheck(state, random = Math.random) {
+  if (!state.current || state.complete) return state;
+  const distractors = shuffle(
+    state.cards.filter((card) => card.id !== state.current.id).map((card) => card.english),
+    random,
+  ).slice(0, 3);
+  const options = shuffle([state.current.english, ...distractors], random);
+  return { ...state, checking: true, options, lastAnswerCorrect: null };
+}
+
+export function answerKnowledgeCheck(state, answer, random = Math.random) {
+  if (!state.checking || !state.current) return { correct: false, state };
+  if (answer !== state.current.english) {
+    return { correct: false, state: { ...state, lastAnswerCorrect: false } };
+  }
+  return { correct: true, state: markKnown(state, random) };
 }
 
 function buildState(cards, knownIds, random) {
@@ -39,10 +60,22 @@ function buildState(cards, knownIds, random) {
     revealed: false,
     remaining: available.length,
     complete: available.length === 0,
+    checking: false,
+    options: [],
+    lastAnswerCorrect: null,
   };
 }
 
 function pick(cards, random) {
   if (cards.length === 0) return null;
   return cards[Math.min(Math.floor(random() * cards.length), cards.length - 1)];
+}
+
+function shuffle(items, random) {
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const target = Math.min(Math.floor(random() * (index + 1)), index);
+    [shuffled[index], shuffled[target]] = [shuffled[target], shuffled[index]];
+  }
+  return shuffled;
 }

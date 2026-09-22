@@ -1,9 +1,10 @@
 import {
   createStudyState,
   revealAnswer,
-  markKnown,
   skipCard,
   restoreProgress,
+  beginKnowledgeCheck,
+  answerKnowledgeCheck,
 } from './flash-engine.mjs';
 
 const STORAGE_KEY = 'henrique-programas-flash-cards-known-v1';
@@ -17,6 +18,11 @@ const revealButton = document.querySelector('#reveal-button');
 const knownButton = document.querySelector('#known-button');
 const skipButton = document.querySelector('#skip-button');
 const resetButton = document.querySelector('#reset-button');
+const knowledgeCheck = document.querySelector('#knowledge-check');
+const checkFrenchWord = document.querySelector('#check-french-word');
+const answerOptions = document.querySelector('#answer-options');
+const checkFeedback = document.querySelector('#check-feedback');
+const cancelCheck = document.querySelector('#cancel-check');
 
 let state;
 
@@ -54,28 +60,62 @@ function render(message) {
   card.classList.toggle('is-revealed', state.revealed);
   language.textContent = state.revealed ? 'English' : 'French';
   word.textContent = state.revealed ? state.current.english : state.current.french;
-  hint.textContent = state.revealed ? 'Choose whether you know this word, or keep practising it.' : 'Tap, press Enter, or use Reveal answer.';
+  hint.textContent = state.revealed ? 'Select “I know this” to try a quick four-answer check.' : 'Tap, press Enter, or use Reveal answer.';
   card.setAttribute('aria-label', state.revealed ? `English translation: ${state.current.english}` : `French word: ${state.current.french}. Activate to reveal its translation.`);
   status.textContent = message;
-  disableActions(false);
-  revealButton.disabled = state.revealed;
+  disableActions(state.checking);
+  revealButton.disabled = state.revealed || state.checking;
 }
 
 function reveal() {
-  if (!state || state.complete || state.revealed) return;
+  if (!state || state.complete || state.revealed || state.checking) return;
   state = revealAnswer(state);
   render('Answer revealed. Do you know this word?');
 }
 
-function markAsKnown() {
-  if (!state || state.complete) return;
-  state = markKnown(state);
+function startKnowledgeCheck() {
+  if (!state || state.complete || state.checking) return;
+  state = beginKnowledgeCheck(state);
+  checkFrenchWord.textContent = state.current.french;
+  checkFeedback.textContent = 'Choose the correct English translation.';
+  answerOptions.replaceChildren(...state.options.map((option) => {
+    const button = document.createElement('button');
+    button.className = 'answer-option';
+    button.type = 'button';
+    button.textContent = option;
+    button.addEventListener('click', () => answerCheck(option, button));
+    return button;
+  }));
+  knowledgeCheck.hidden = false;
+  answerOptions.querySelector('button')?.focus();
+  render('Quick check open. Choose the matching English word.');
+}
+
+function answerCheck(answer, button) {
+  const result = answerKnowledgeCheck(state, answer);
+  state = result.state;
+  if (!result.correct) {
+    button.classList.add('is-wrong');
+    button.disabled = true;
+    checkFeedback.textContent = 'Not quite — choose another answer or keep practising.';
+    return;
+  }
   saveKnownIds(state.knownIds);
-  render(state.complete ? 'You completed this vocabulary deck!' : 'Saved as known. Here is another card.');
+  knowledgeCheck.hidden = true;
+  render(state.complete ? 'You completed this vocabulary deck!' : 'Correct! Saved as known. Here is another card.');
+  knownButton.focus();
+}
+
+function closeKnowledgeCheck() {
+  if (!state?.checking) return;
+  state = { ...state, checking: false, options: [], lastAnswerCorrect: null };
+  knowledgeCheck.hidden = true;
+  render('Kept for practice. Reveal the answer whenever you want.');
+  knownButton.focus();
 }
 
 function skip() {
-  if (!state || state.complete) return;
+  if (!state || state.complete || state.checking) return;
   state = skipCard(state);
   render('Kept for practice. Here is another card.');
 }
@@ -84,6 +124,7 @@ function resetProgress() {
   if (!state) return;
   localStorage.removeItem(STORAGE_KEY);
   state = createStudyState(state.cards);
+  knowledgeCheck.hidden = true;
   render('Progress reset. The full deck is ready again.');
 }
 
@@ -107,9 +148,10 @@ function disableActions(disabled) {
 }
 
 revealButton.addEventListener('click', reveal);
-knownButton.addEventListener('click', markAsKnown);
+knownButton.addEventListener('click', startKnowledgeCheck);
 skipButton.addEventListener('click', skip);
 resetButton.addEventListener('click', resetProgress);
+cancelCheck.addEventListener('click', closeKnowledgeCheck);
 card.addEventListener('click', reveal);
 card.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' || event.key === ' ') {
@@ -118,11 +160,13 @@ card.addEventListener('keydown', (event) => {
   }
 });
 window.addEventListener('keydown', (event) => {
-  if (event.key.toLowerCase() === ' ') {
+  if (event.key === 'Escape') closeKnowledgeCheck();
+  if (state?.checking) return;
+  if (event.key === ' ') {
     event.preventDefault();
     reveal();
   }
-  if (event.key.toLowerCase() === 'k') markAsKnown();
+  if (event.key.toLowerCase() === 'k') startKnowledgeCheck();
   if (event.key.toLowerCase() === 's') skip();
 });
 

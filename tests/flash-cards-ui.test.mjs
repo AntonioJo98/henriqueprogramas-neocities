@@ -13,6 +13,9 @@ test('Flash Cards page exposes a study card, progress, and learning actions', as
   assert.match(html, /id="remaining-count"/);
   assert.match(html, /id="reveal-button"/);
   assert.match(html, /id="known-button"/);
+  assert.match(html, /id="knowledge-check"/);
+  assert.match(html, /id="answer-options"/);
+  assert.match(html, /role="dialog"/);
   assert.match(html, /id="skip-button"/);
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /flash-cards\.mjs/);
@@ -27,6 +30,6 @@ test('Flash Cards project has local data, styles and JavaScript entry point', as
 
   assert.match(css, /\.flash-card/);
   assert.match(script, /localStorage/);
-  assert.match(script, /markKnown/);
+  assert.match(script, /answerKnowledgeCheck/);
   assert.match(data, /"french"/);
 });

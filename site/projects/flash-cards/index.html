@@ -25,6 +25,15 @@
         <button id="known-button" class="action action--known" type="button">I know this ✓</button>
       </div>
       <button id="reset-button" class="reset-button" type="button">Reset saved progress</button>
+      <section id="knowledge-check" class="knowledge-check" role="dialog" aria-modal="true" aria-labelledby="check-title" hidden>
+        <div class="check-popup">
+          <p class="eyebrow">Quick check</p><h2 id="check-title">Which English word matches this French word?</h2>
+          <p id="check-french-word" class="check-word">—</p>
+          <div id="answer-options" class="answer-options" aria-label="English answer choices"></div>
+          <p id="check-feedback" class="check-feedback" aria-live="polite"></p>
+          <button id="cancel-check" class="cancel-check" type="button">Keep practising this word</button>
+        </div>
+      </section>
     </section>
     <section class="project-note"><h2>About this rebuild</h2><p>This project revisits the Flash Card App exercise from Angela Yu's <em>100 Days of Code: The Complete Python Pro Bootcamp</em>. The original used Python Tkinter, CSV data and a three-second flip. This browser implementation uses locally curated vocabulary, keyboard support and <code>localStorage</code> so progress stays on this device.</p></section>
   </main>
