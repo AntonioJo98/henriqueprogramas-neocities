@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Play Turtle Crossing, António's JavaScript Canvas rebuild of a Python learning project.">
+  <title>Turtle Crossing — Henrique Programas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <a class="back-link" href="/">← Portfolio</a>
+    <header class="game-header">
+      <div><p class="eyebrow">Python project → JavaScript rebuild</p><h1>Turtle<br>Crossing</h1><p class="intro">Cross the traffic, reach safety, and survive the next faster level.</p></div>
+      <div class="level-card"><span>Level</span><strong id="level">1</strong></div>
+    </header>
+    <section class="game-panel" aria-labelledby="game-title">
+      <h2 id="game-title" class="visually-hidden">Playable Turtle Crossing game</h2>
+      <div class="canvas-wrap">
+        <canvas id="game-board" width="600" height="600" aria-label="Turtle Crossing game board"></canvas>
+        <div id="game-overlay" class="game-overlay"><p id="overlay-title" class="overlay-title">Ready to cross?</p><p id="overlay-copy">Use the arrow keys, WASD, or the controls below.</p><button id="start-button" type="button">Start crossing</button></div>
+      </div>
+      <p id="game-status" class="status" aria-live="polite">Game ready. Reach the green finish zone.</p>
+      <div class="direction-pad" aria-label="Touch direction controls">
+        <button type="button" data-direction="up" aria-label="Move up">↑</button>
+        <div><button type="button" data-direction="left" aria-label="Move left">←</button><button type="button" data-direction="down" aria-label="Move down">↓</button><button type="button" data-direction="right" aria-label="Move right">→</button></div>
+      </div>
+      <p class="keyboard-hint"><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> or <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></p>
+    </section>
+    <section class="project-note"><h2>About this rebuild</h2><p>This browser game revisits the Turtle Crossing exercise from Angela Yu's <em>100 Days of Code: The Complete Python Pro Bootcamp</em>. The original lesson used Python Turtle; this is a new JavaScript Canvas implementation with four-direction controls, responsive presentation, and automated tests.</p></section>
+  </main>
+  <script type="module" src="game.mjs"></script>
+</body>
+</html>

@@ -23,11 +23,17 @@ test('Snake card links to the playable demo and repository', async () => {
   assert.match(html, /href="https:\/\/github\.com\/AntonioJo98\/henriqueprogramas-neocities"/);
 });
 
-test('unbuilt projects are labelled honestly instead of linking to invented demos', async () => {
+test('Turtle Crossing card links to its playable demo', async () => {
   const html = await readFile(new URL('index.html', siteRoot), 'utf8');
 
-  assert.equal((html.match(/Coming next/g) || []).length, 3);
-  assert.doesNotMatch(html, /href="\/projects\/(turtle-crossing|flash-cards|coffee-wifi)\//);
+  assert.match(html, /href="\/projects\/turtle-crossing\/"[^>]*>\s*Play Turtle Crossing/);
+});
+
+test('remaining unbuilt projects are labelled honestly instead of linking to invented demos', async () => {
+  const html = await readFile(new URL('index.html', siteRoot), 'utf8');
+
+  assert.equal((html.match(/Coming next/g) || []).length, 2);
+  assert.doesNotMatch(html, /href="\/projects\/(flash-cards|coffee-wifi)\//);
 });
 
 test('homepage contains an accessible introduction and project section', async () => {

@@ -21,7 +21,7 @@ This repository is bootstrapped from the public starter page at `https://henriqu
 The homepage now presents the first four projects as a coherent collection. Only implemented demos receive live links; planned projects are labelled honestly.
 
 1. **Snake** — playable JavaScript/Canvas rebuild in `site/projects/snake/`; live on Neocities.
-2. Turtle Crossing — card published, demo planned
+2. **Turtle Crossing** — playable JavaScript/Canvas rebuild in `site/projects/turtle-crossing/`; live on Neocities.
 3. Flash Cards — card published, demo planned
 4. Coffee & WiFi — card published, demo planned
 
