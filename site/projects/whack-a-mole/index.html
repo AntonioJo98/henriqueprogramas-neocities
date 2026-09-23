@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Play Whack-a-Mole, a browser game built as an original portfolio project."><title>Whack-a-Mole — Henrique Programas</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<main class="game-shell"><a class="back-link" href="/">← Portfolio</a>
+<header class="game-header"><div><p class="eyebrow">Original practice project · JavaScript</p><h1>Whack<br><span>a Mole</span></h1><p class="intro">Thirty seconds. Nine holes. Hit the mole before it vanishes.</p></div><div class="scoreboard"><div><span>Score</span><strong id="score">0</strong></div><div><span>Time</span><strong id="timer">30</strong></div></div></header>
+<section class="game-panel" aria-labelledby="game-title"><h2 id="game-title" class="visually-hidden">Playable Whack-a-Mole game</h2><div class="board" aria-label="Nine-hole game board">
+<button class="hole" type="button" data-hole="0" aria-label="Hole 1"><span class="mole">●</span></button><button class="hole" type="button" data-hole="1" aria-label="Hole 2"><span class="mole">●</span></button><button class="hole" type="button" data-hole="2" aria-label="Hole 3"><span class="mole">●</span></button>
+<button class="hole" type="button" data-hole="3" aria-label="Hole 4"><span class="mole">●</span></button><button class="hole" type="button" data-hole="4" aria-label="Hole 5"><span class="mole">●</span></button><button class="hole" type="button" data-hole="5" aria-label="Hole 6"><span class="mole">●</span></button>
+<button class="hole" type="button" data-hole="6" aria-label="Hole 7"><span class="mole">●</span></button><button class="hole" type="button" data-hole="7" aria-label="Hole 8"><span class="mole">●</span></button><button class="hole" type="button" data-hole="8" aria-label="Hole 9"><span class="mole">●</span></button>
+</div><p id="game-status" class="status" aria-live="polite">Ready for a quick reaction challenge.</p><button id="start-button" class="start-button" type="button">Start 30-second game</button></section>
+<section class="project-note"><h2>About this project</h2><p>Whack-a-Mole is an original complementary project, built to practise browser state, timers, responsive controls and accessible feedback after the first course-inspired portfolio demos.</p></section></main><script type="module" src="game.mjs"></script></body></html>

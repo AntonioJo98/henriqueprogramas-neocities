@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const siteRoot = new URL('../site/', import.meta.url);
 
-test('portfolio homepage presents exactly the first four projects', async () => {
+test('portfolio homepage keeps four course-inspired cards and adds Whack-a-Mole', async () => {
   const html = await readFile(new URL('index.html', siteRoot), 'utf8');
   const cards = [...html.matchAll(/<article[^>]+data-project="([^"]+)"/g)];
 
@@ -13,6 +13,7 @@ test('portfolio homepage presents exactly the first four projects', async () => 
     'turtle-crossing',
     'flash-cards',
     'coffee-wifi',
+    'whack-a-mole',
   ]);
 });
 
@@ -41,11 +42,11 @@ test('Coffee & WiFi card links to its playable demo', async () => {
   assert.match(html, /href="\/projects\/coffee-wifi\/"[^>]*>\s*Explore Coffee &amp; WiFi/);
 });
 
-test('homepage labels all four built projects as live', async () => {
+test('homepage labels all five built projects as live', async () => {
   const html = await readFile(new URL('index.html', siteRoot), 'utf8');
 
   assert.equal((html.match(/Coming next/g) || []).length, 0);
-  assert.equal((html.match(/>Live</g) || []).length, 4);
+  assert.equal((html.match(/>Live</g) || []).length, 5);
 });
 
 test('homepage contains an accessible introduction and project section', async () => {
