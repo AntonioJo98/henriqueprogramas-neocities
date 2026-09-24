@@ -15,6 +15,7 @@ test('portfolio homepage keeps four course-inspired cards and adds Whack-a-Mole'
     'coffee-wifi',
     'whack-a-mole',
     'calculator',
+    'disappearing-text',
   ]);
 });
 
@@ -43,11 +44,11 @@ test('Coffee & WiFi card links to its playable demo', async () => {
   assert.match(html, /href="\/projects\/coffee-wifi\/"[^>]*>\s*Explore Coffee &amp; WiFi/);
 });
 
-test('homepage labels all six built projects as live', async () => {
+test('homepage labels all seven built projects as live', async () => {
   const html = await readFile(new URL('index.html', siteRoot), 'utf8');
 
   assert.equal((html.match(/Coming next/g) || []).length, 0);
-  assert.equal((html.match(/>Live</g) || []).length, 6);
+  assert.equal((html.match(/>Live</g) || []).length, 7);
 });
 
 test('homepage contains an accessible introduction and project section', async () => {
