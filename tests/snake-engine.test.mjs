@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {
   changeDirection,
   createGame,
+  shouldHandleDirectionKey,
   stepGame,
 } from '../site/projects/snake/game-engine.mjs';
 
@@ -36,6 +37,12 @@ test('changeDirection rejects an immediate reverse', () => {
 
   assert.deepEqual(changeDirection(game, { x: -1, y: 0 }).direction, { x: 1, y: 0 });
   assert.deepEqual(changeDirection(game, { x: 0, y: -1 }).direction, { x: 0, y: -1 });
+});
+
+test('direction keys stay available to a player-name input before the game starts', () => {
+  assert.equal(shouldHandleDirectionKey({ gameStatus: 'ready', targetIsTextInput: true }), false);
+  assert.equal(shouldHandleDirectionKey({ gameStatus: 'playing', targetIsTextInput: true }), true);
+  assert.equal(shouldHandleDirectionKey({ gameStatus: 'playing', targetIsTextInput: false }), true);
 });
 
 test('eating food grows the snake and increases the score', () => {

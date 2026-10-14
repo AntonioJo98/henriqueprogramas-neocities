@@ -1,4 +1,4 @@
-import { changeDirection, createGame, stepGame } from './game-engine.mjs';
+import { changeDirection, createGame, shouldHandleDirectionKey, stepGame } from './game-engine.mjs';
 import { createScoreboard } from '../shared/scoreboard.mjs';
 
 const canvas = document.querySelector('#game-board');
@@ -125,7 +125,7 @@ directionButtons.forEach((button) => {
 
 window.addEventListener('keydown', (event) => {
   const nextDirection = keyDirections.get(event.key) || keyDirections.get(event.key.toLowerCase());
-  if (!nextDirection) return;
+  if (!nextDirection || !shouldHandleDirectionKey({ gameStatus: game.status })) return;
   event.preventDefault();
   setDirection(nextDirection);
 });

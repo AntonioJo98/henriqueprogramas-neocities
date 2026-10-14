@@ -30,6 +30,10 @@ export function changeDirection(game, nextDirection) {
   return { ...game, direction: nextDirection };
 }
 
+export function shouldHandleDirectionKey({ gameStatus }) {
+  return gameStatus === 'playing';
+}
+
 export function stepGame(game, random = Math.random) {
   if (game.status !== 'playing') {
     return game;
