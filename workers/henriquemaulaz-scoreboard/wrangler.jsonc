@@ -1,0 +1,19 @@
+{
+  "name": "henriquemaulaz-scoreboard",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-10-08",
+  "d1_databases": [
+    {
+      "binding": "SCORES_DB",
+      "database_name": "henriquemaulaz-scores",
+      "database_id": "2d333630-5004-42a1-ac72-40a0e06aa0bf"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "SCORE_RATE_LIMITER",
+      "namespace_id": "1002",
+      "simple": { "limit": 6, "period": 60 }
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { changeDirection, createGame, stepGame } from './game-engine.mjs';
+import { createScoreboard } from '../shared/scoreboard.mjs';
 
 const canvas = document.querySelector('#game-board');
 const context = canvas.getContext('2d');
@@ -38,8 +39,10 @@ const keyDirections = new Map([
 let game = createGame({ columns: COLUMNS, rows: ROWS });
 let timer = null;
 let highScore = Number.parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+const publicScores = createScoreboard({ game: 'snake', form: document.querySelector('#player-form'), tableBody: document.querySelector('#scoreboard-body'), status: document.querySelector('#scoreboard-status') });
 
 function startGame() {
+  if (!publicScores.capturePlayer()) return;
   stopTimer();
   game = { ...createGame({ columns: COLUMNS, rows: ROWS }), status: 'playing' };
   overlay.hidden = true;
@@ -61,6 +64,7 @@ function tick() {
     startButton.textContent = 'Play again';
     overlay.hidden = false;
     statusElement.textContent = `Game over. Final score ${game.score}.`;
+    publicScores.submit(game.score);
   }
 }
 
@@ -127,3 +131,4 @@ window.addEventListener('keydown', (event) => {
 });
 
 render();
+publicScores.load();

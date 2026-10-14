@@ -5,6 +5,7 @@
   <meta name="description" content="Play Turtle Crossing, António's JavaScript Canvas rebuild of a Python learning project.">
   <title>Turtle Crossing — Henrique Programas</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/projects/shared/scoreboard.css">
 </head>
 <body>
   <main class="game-shell">
@@ -26,6 +27,8 @@
       </div>
       <p class="keyboard-hint"><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> or <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></p>
     </section>
+    <form id="player-form" class="player-form"><label for="player-name">Player name</label><input id="player-name" name="playerName" minlength="2" maxlength="20" autocomplete="nickname" required><small>Your player name, score and date/time will be public. Use a nickname, not personal information.</small></form>
+    <section class="public-scoreboard" aria-labelledby="public-scoreboard-title"><h2 id="public-scoreboard-title">Global scoreboard</h2><p class="scoreboard-note">Top 20 scores. All valid results remain stored.</p><div class="scoreboard-scroll"><table><thead><tr><th>Rank</th><th>Player</th><th>Level</th><th>Date and time</th></tr></thead><tbody id="scoreboard-body"></tbody></table></div><p id="scoreboard-status" class="scoreboard-status" aria-live="polite"></p></section>
     <section class="project-note"><h2>About this rebuild</h2><p>This browser game revisits the Turtle Crossing exercise from Angela Yu's <em>100 Days of Code: The Complete Python Pro Bootcamp</em>. The original lesson used Python Turtle; this is a new JavaScript Canvas implementation with four-direction controls, responsive presentation, and automated tests.</p></section>
   </main>
   <script type="module" src="game.mjs"></script>
